@@ -1,0 +1,29 @@
+name: Build LLVM
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Build LLVM Toolchain
+        run: |
+          sudo apt update
+          sudo apt install -y \
+            bc binutils-dev bison build-essential \
+            ca-certificates ccache clang cmake curl \
+            file flex git libelf-dev libssl-dev \
+            lld make ninja-build python3-dev \
+            texinfo u-boot-tools xz-utils zlib1g-dev
+
+          git clone --depth=1 https://github.com/Zycromerz/tc-build.git
+          cd tc-build
+
+          python3 build-llvm.py
+
+          echo "$GITHUB_WORKSPACE/tc-build/install/bin" >> $GITHUB_PATH
+
+          clang --version
+          ld.lld --version

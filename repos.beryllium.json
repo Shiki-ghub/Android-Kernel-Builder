@@ -2,8 +2,8 @@
   {
     "kernelSource": {
       "name": "ngk",
-      "repo": "https://github.com/Shiki-ghub/NGK_android_kernel_xiaomi_sdm845",
-      "branch": "t-caf-latest",
+      "repo": "https://github.com/almostdead1/NGK_android_kernel_xiaomi_sdm845.git",
+      "branch": "t-caf-ksu",
       "device": "beryllium",
       "defconfig": "nogravity_defconfig"
     },

@@ -27,7 +27,7 @@ jobs:
         id: generate-builddate
         run: echo "builddate=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
 
-  Build-Kernel:
+  f1perf:
     name: "🐎 Build kernel"
     runs-on: ubuntu-22.04
     needs:

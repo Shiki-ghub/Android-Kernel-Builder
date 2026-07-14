@@ -74,7 +74,7 @@ jobs:
 
           echo "🤔 Clone kernel source => ($KERNEL_REPO)"
           
-                - name: "📂 Copy NSE DTS files"
+      - name: "📂 Copy NSE DTS files"
         working-directory: ${{ env.KERNEL_NAME }}
         run: |
           cp arch/arm64/boot/dts/qcom/SE_NSE/NSE/* arch/arm64/boot/dts/qcom/

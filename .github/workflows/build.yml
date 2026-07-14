@@ -159,7 +159,7 @@ jobs:
           echo "# KernelSU" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
           echo "CONFIG_KSU=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
           echo "CONFIG_KSU_MANUAL_HOOK=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
-          echo "# CONFIG_KPROBES is not set" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
+          echo "CONFIG_KPROBES=n" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
 
                     
           cat arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}

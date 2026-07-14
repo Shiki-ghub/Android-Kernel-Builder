@@ -83,7 +83,7 @@ jobs:
          cp arch/arm64/boot/dts/qcom/SE_NSE/NSE/* arch/arm64/boot/dts/qcom/
 
          echo "Destination:"
-         ls -lh arch/arm64/boot/dts/qcom/sdm845-xiaomi-common.dts
+         ls -lh arch/arm64/boot/dts/qcom/sdm845-xiaomi-common.dtsi
           
       - name: "💫 Get toolchains"
         env:

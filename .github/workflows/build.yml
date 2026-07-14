@@ -73,6 +73,11 @@ jobs:
           git clone --recursive --depth=1 -j $(nproc) --branch $KERNEL_BRANCH $KERNEL_REPO $KERNEL_NAME
 
           echo "🤔 Clone kernel source => ($KERNEL_REPO)"
+          
+                - name: "📂 Copy NSE DTS files"
+        working-directory: ${{ env.KERNEL_NAME }}
+        run: |
+          cp arch/arm64/boot/dts/qcom/SE_NSE/NSE/* arch/arm64/boot/dts/qcom/
 
       - name: "💫 Get toolchains"
         env:
@@ -231,3 +236,4 @@ jobs:
           tag_name: v${{ env.builddate }}.${{ github.run_number }}
           files: "${{ env.WORKSPACE }}/${{ env.KERNEL_DEVICE }}-${{ env.KERNEL_NAME }}_${{ env.builddate }}.zip"
           generate_release_notes: true
+          

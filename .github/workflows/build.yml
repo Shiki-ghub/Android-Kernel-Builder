@@ -89,8 +89,8 @@ jobs:
         working-directory: ${{ env.KERNEL_NAME }}
         run: |
 
-         curl -LSs https://raw.githubusercontent.com/rksuorg/kernel_patches/master/manual_hook/kernel-4.4_4.9.patch | git apply --check
-         curl -LSs https://raw.githubusercontent.com/rksuorg/kernel_patches/master/manual_hook/kernel-4.4_4.9.patch | git apply
+         curl -LSs https://raw.githubusercontent.com/Shiki-ghub/kernel_patches-nxt/main/syscall_hook/syscall_hooks_4.9.patch | git apply --check
+         curl -LSs https://raw.githubusercontent.com/Shiki-ghub/kernel_patches-nxt/main/syscall_hook/syscall_hooks_4.9.patch | git apply
           
       - name: "💫 Get toolchains"
         env:

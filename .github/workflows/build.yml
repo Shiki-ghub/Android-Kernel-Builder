@@ -152,12 +152,13 @@ jobs:
           echo "" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
           echo "# KernelSU" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
           echo "CONFIG_KSU=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
-          echo "KSU_H_SELINUX_HIDE=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
-          echo "KSU_H_KERNEL_UMOUNT=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
-          echo "KSU_H_ADB_ROOT=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
-          echo "KSU_H_SUCOMPAT=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
-          echo "KSU_H_SULOG=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}      
-          echo "CONFIG_KSU__HOOK=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
+          echo "CONFIG_KSU_H_SELINUX_HIDE=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
+          echo "CONFIG_KSU_H_KERNEL_UMOUNT=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
+          echo "CONFIG_KSU_H_ADB_ROOT=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
+          echo "CONFIG_KSU_H_SUCOMPAT=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
+          echo "CONFIG_KSU_HOOK=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
+          echo "CONFIG_SU_H_SULOG=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}      
+          echo "CONFIG_KSU_EXTRAS=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
           echo "CONFIG_KSU_MANUAL_HOOK=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
           echo "CONFIG_KSU_TAMPER_SYSCALL_TABLE=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
           echo "CONFIG_KPROBES=n" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}

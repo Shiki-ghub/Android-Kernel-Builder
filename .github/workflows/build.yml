@@ -89,8 +89,8 @@ jobs:
         working-directory: ${{ env.KERNEL_NAME }}
         run: |
 
-         curl -LSs https://raw.githubusercontent.com/Shiki-ghub/kernel_patches-nxt/main/syscall_hook/syscall_hooks_4.9.patch | git apply --check
-         curl -LSs https://raw.githubusercontent.com/Shiki-ghub/kernel_patches-nxt/main/syscall_hook/syscall_hooks_4.9.patch | git apply
+         curl -LSs https://raw.githubusercontent.com/Shiki-ghub/kernel_patchesv/main/next/scope_min_manual_hooks_v1.6.patch | git apply --check
+         curl -LSs https://raw.githubusercontent.com/Shiki-ghub/kernel_patchesv/main/next/scope_min_manual_hooks_v1.6.patch | git apply
           
       - name: "💫 Get toolchains"
         env:
@@ -154,7 +154,8 @@ jobs:
             rm -rf "./drivers/kernelsu"
           fi
 
-          curl -LSs https://raw.githubusercontent.com/ThRE-Team/KernelSU-Next/main/kernel/setup.sh | bash -s v3.3.0         
+          curl -LSs https://raw.githubusercontent.com/backslashxx/KernelSU/master/kernel/setup.sh | bash -s master
+          
           echo "" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
           echo "# KernelSU" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
           echo "CONFIG_KSU=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}

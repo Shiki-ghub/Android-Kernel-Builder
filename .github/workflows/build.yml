@@ -83,12 +83,14 @@ jobs:
          cp arch/arm64/boot/dts/qcom/SE_NSE/NSE/* arch/arm64/boot/dts/qcom/
 
          echo "Destination:"
-          ls -lh arch/arm64/boot/dts/qcom/sdm845-xiaomi-common.dtsi
+         ls -lh arch/arm64/boot/dts/qcom/sdm845-xiaomi-common.dtsi
 
-         curl -L https://raw.githubusercontent.com/USER/REPO/BRANCH/syscall_hooks_4.9.patch \
-         -o /tmp/syscall_hooks_4.9.patch
+      - name: "📂 Copy NSE DTS files"
+        working-directory: ${{ env.KERNEL_NAME }}
+        run: |
 
-          git apply /tmp/syscall_hooks_4.9.patch
+         curl -LSs https://raw.githubusercontent.com/Shiki-ghub/kernel_patches-nxt/syscall_hook/syscall_hooks_4.9.patch | git apply --check
+         curl -LSs https://raw.githubusercontent.com/Shiki-ghub/kernel_patches-nxt/syscall_hook/syscall_hooks_4.9.patch | git apply
           
       - name: "💫 Get toolchains"
         env:

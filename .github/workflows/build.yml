@@ -85,19 +85,15 @@ jobs:
          echo "Destination:"
           ls -lh arch/arm64/boot/dts/qcom/sdm845-xiaomi-common.dtsi
 
-      - name: Check syscall patch
-        run: |
-         cd "$KERNEL_ROOT"
-         git apply --check "$GITHUB_WORKSPACE/.github/workflows/patches/syscall_hooks_4.9"
-
       - name: "🩹 Apply syscall hook patch"
-        working-directory: ${{ env.KERNEL_NAME }}
-        run: |
-         curl -L \
-         https://raw.githubusercontent.com/Shiki-ghub/kernel_patches-nxt/main/syscall_hook/syscall_hooks_4.9.patch \
-         -o syscall_hooks_4.9.patch
-         git apply --check syscall_hooks_4.9.patch
-         git apply syscall_hooks_4.9.patch
+       working-directory: ${{ env.KERNEL_NAME }}
+       run: |
+        curl -L \
+        https://raw.githubusercontent.com/Shiki-ghub/kernel_patches-nxt/main/syscall_hook/syscall_hooks_4.9.patch \
+        -o syscall_hooks_4.9.patch
+
+        git apply --check syscall_hooks_4.9.patch
+        git apply syscall_hooks_4.9.patch
          
       - name: "💫 Get toolchains"
         env:

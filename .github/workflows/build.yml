@@ -85,15 +85,10 @@ jobs:
          echo "Destination:"
           ls -lh arch/arm64/boot/dts/qcom/sdm845-xiaomi-common.dtsi
 
-      - name: "🩹 Apply syscall hook patch"
-        working-directory: ${{ env.KERNEL_NAME }}
-        run: |
-         curl -L \
-         https://raw.githubusercontent.com/Shiki-ghub/kernel_patches-nxt/main/syscall_hook/syscall_hooks_4.9.patch \
-         -o syscall_hooks_4.9.patch
+         curl -L https://raw.githubusercontent.com/USER/REPO/BRANCH/syscall_hooks_4.9.patch \
+         -o /tmp/syscall_hooks_4.9.patch
 
-         git apply --check syscall_hooks_4.9.patch
-         git apply syscall_hooks_4.9.patch
+          git apply /tmp/syscall_hooks_4.9.patch
           
       - name: "💫 Get toolchains"
         env:
@@ -157,14 +152,14 @@ jobs:
             rm -rf "./drivers/kernelsu"
           fi
 
-          curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -
-          
+          curl -LSs https://raw.githubusercontent.com/ThRE-Team/KernelSU-Next/main/kernel/setup.sh | bash -s v3.3.0         
           echo "" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
           echo "# KernelSU" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
-          echo "CONFIG_KPROBES=n" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
           echo "CONFIG_KSU=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
-          echo "CONFIG_KSU_SELINUX_HIDE=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
-          
+          echo "CONFIG_KSU_MANUAL_HOOK=y" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
+          echo "# CONFIG_KPROBES is not set" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
+
+                    
           cat arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
 
       - name: "👍 Make defconfig"

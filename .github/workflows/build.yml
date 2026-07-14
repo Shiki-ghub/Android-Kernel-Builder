@@ -90,11 +90,15 @@ jobs:
          cd "$KERNEL_ROOT"
          git apply --check "$GITHUB_WORKSPACE/.github/workflows/patches/syscall_hooks_4.9"
 
-      - name: Apply syscall patch
+      - name: "🩹 Apply syscall hook patch"
+        working-directory: ${{ env.KERNEL_NAME }}
         run: |
-         cd "$KERNEL_ROOT"
-         git apply "$GITHUB_WORKSPACE/.github/workflows/patches/syscall_hooks_4.9"
-          
+         curl -L \
+         https://raw.githubusercontent.com/Shiki-ghub/kernel_patches-nxt/main/syscall_hook/syscall_hooks_4.9.patch \
+         -o syscall_hooks_4.9.patch
+         git apply --check syscall_hooks_4.9.patch
+         git apply syscall_hooks_4.9.patch
+         
       - name: "💫 Get toolchains"
         env:
           toolchains: "${{ toJSON(matrix.repos.toolchains) }}"
